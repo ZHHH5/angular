@@ -1,0 +1,32 @@
+<p>heroes works!</p>
+<!-- uppercase用来更改大小写 -->
+<h2>{{hero.name | uppercase}}Details</h2>
+<div><span>id:</span>{{hero.id}}</div>
+<div><span>name:</span>{{hero.name}}</div>
+<div>
+    <label>name:
+        <input [(ngModel)]="hero.name" placeholder="name">
+    </label>
+</div>
+<h2>My Heroes</h2>
+<ul class="heroes">
+    <!-- *ngFor循环输出heroes里的值赋给hero -->
+    <!-- [class.selected]????? -->
+    <li *ngFor="let hero of heroes" 
+    [class.selected]="hero === selectedHero"
+    (click)="onSelect(hero)">
+        <span class="badge">{{hero.id}}</span>{{hero.name}}
+    </li>
+</ul>
+<!-- *ngIf使当selectedHero为空(未被选择时)作用域内代码无法显示 -->
+<div *ngIf="selectedHero">
+    <h2>{{selectedHero.name | uppercase}}</h2>
+    <div>
+        <span>id:</span>{{selectedHero.id}}
+    </div>
+    <div>
+        <label>name:
+            <input [(ngModel)]="selectedHero.name" placeholder="name">
+        </label>
+    </div>
+</div>
